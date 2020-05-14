@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname , 'public')))
 const port = process.env.PORT || 3000 
 
 //BaseUrl
-const BaseUrl = 'http://localhost:3000'
+const BaseUrl = 'https://url-shortener-app1.herokuapp.com/'
 
 //=========Routes======================
 
