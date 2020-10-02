@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const port = process.env.PORT || 3000;
 
 //BaseUrl
-const BaseUrl = "https://url-shortener-app1.herokuapp.com/";
+const BaseUrl = "https://url-shortener-app1.herokuapp.com";
 
 //=========Routes======================
 
@@ -58,7 +58,7 @@ app.post("/", async (req, res) => {
       msgs.push(user);
       res.render("index.ejs", { msgs });
     } else {
-      const shortUrl = BaseUrl + urlCode;
+      const shortUrl = BaseUrl + "/" + urlCode;
 
       const newUrl = new Url({
         urlCode,
@@ -81,14 +81,18 @@ app.post("/", async (req, res) => {
   }
 });
 
-//get baseUrl/:code
 app.get("/:code", async (req, res) => {
-  const userUrl = await Url.findOne({ urlCode: req.params.code });
-  console.log(userUrl);
-  if (userUrl) {
-    return res.redirect(userUrl.longUrl);
-  } else {
-    console.log("No url found");
+  try {
+    const userUrl = await Url.findOne({ urlCode: req.params.code });
+    console.log(userUrl);
+    if (userUrl) {
+      return res.redirect(userUrl.longUrl);
+    } else {
+      throw new Error("This URL wasn't found on the server!");
+    }
+  } catch (e) {
+    console.log(e.message);
+    res.render("index", { errors: [{ error: e.message }] });
   }
 });
 

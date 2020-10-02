@@ -6,19 +6,16 @@
     <title>Url Shortener Application</title>
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
   <body>
     <div class="jumbotron text-center">
       <h1 class="display-4">URL SHORTENER APP</h1>
       <p class="lead">
-        Enter any Long Url and get a shorter Url Back . Give it a shot !
+        Enter any Long URL and get a shorter URL Back . Give it a shot !
       </p>
       <cite>Developed By Pathikrit Chanda </cite>
     </div>
@@ -43,10 +40,10 @@
           </div>
           <% }) %> <% } %><% if(typeof msgs != 'undefined'){ %> <%
           msgs.forEach((msg)=>{ %>
-          <p>
-            <b>Here is your Short Link</b> </br>
-            <a href="<%= msg.longUrl %>" target="_blank"><%= msg.shortUrl %></a> .
-          </p>
+            <div class="alert alert-success fade show mb-3">
+              <b>Here is your Short Link:</b> </br>
+              <a href="<%= msg.longUrl %>" target="_blank" style="color: #155724;"><%= msg.shortUrl %></a>
+            </div>
           <p>Hope you liked my app .<3</p>
           <% }) %> <% } %>
           <form method="POST" action="/">
